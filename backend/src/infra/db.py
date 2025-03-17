@@ -22,7 +22,7 @@ class DBConnection:
         self.session = session_make()
         return self
     
-    def __exit__(self):
+    def __exit__(self, exc_type, exc_value, traceback):
         self.session.close()
 
 # audioapp_db = engine.connect()
