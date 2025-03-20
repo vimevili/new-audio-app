@@ -7,7 +7,8 @@ class AudioReviews(Base):
     id = Column(Integer, primary_key=True)
     product_id = Column(Integer)
     user = Column(String(50))
-    description = Column(Text)
+    comment = Column(Text)
     rating = Column(Integer)
-    date = Column(String)
+    created_at = Column(String)
+    updated_at = Column(String)
 

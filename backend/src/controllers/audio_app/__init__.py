@@ -47,9 +47,10 @@ class GetReviews(Resource):
             'id': review.id,
             'product_id': review.product_id,
             'user': review.user,
-            'description': review.description,
+            'comment': review.comment,
             'rating': review.rating,
-            'date': review.date,
+            'created_at': review.created_at,
+            'updated_at': review.updated_at,
         } for review in reviews]
 
         return response, HTTPStatus.OK

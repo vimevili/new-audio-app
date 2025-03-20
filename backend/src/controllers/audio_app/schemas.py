@@ -27,7 +27,8 @@ audio_app_reviews_response = audio_namespace.model('AudioApp reviews', {
     'id': fields.Integer,
     'product_id': fields.Integer,
     'user': fields.String,
-    'description': fields.String,
+    'comment': fields.String,
     'rating': fields.Float,
-    'date': fields.String
+    'created_at': fields.String,
+    'updated_at': fields.String
 })

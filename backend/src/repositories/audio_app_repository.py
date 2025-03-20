@@ -54,9 +54,10 @@ class AudioAppRepository:
                     AudioReviews.id.label('id'),
                     AudioReviews.product_id.label('product_id'),
                     AudioReviews.user.label('user'),
-                    AudioReviews.description.label('description'),   
+                    AudioReviews.comment.label('comment'),   
                     AudioReviews.rating.label('rating'),   
-                    AudioReviews.date.label('date')   
+                    AudioReviews.created_at.label('created_at'),   
+                    AudioReviews.updated_at.label('updated_at')   
                 ).select_from(AudioReviews)
 
                 filters = []
