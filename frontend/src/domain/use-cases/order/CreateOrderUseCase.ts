@@ -1,25 +1,20 @@
-import { Order, OrderStatus } from '../../entities/Order';
-import { Cart } from '../../entities/Cart';
-import { User } from '../../entities/User';
-import { EmptyCartError } from '../../errors/OrderErrors';
+import { Product } from '@/domain/entities';
+import { OrderStatus } from '@/domain/entities/Order';
 
-export class CreateOrderUseCase {
-  execute(cart: Cart, user: User): Order {
-    if (cart.items.length === 0) {
-      throw new EmptyCartError();
-    }
-
-    const order = new Order(
-      Date.now().toString(), // Converting timestamp to string
-      user.id,
-      cart.items,
-      cart.totalPrice,
-      'pending' as OrderStatus,
-      new Date().toISOString(),
-      new Date().toISOString()
-    );
-
-    user.orders.push(order);
-    return order;
-  }
+export interface CreateOrderUseCase {
+  execute(input: CreateOrderInput): Promise<CreateOrderOutput>;
 }
+
+export type CreateOrderInput = {
+  user_id: string;
+  items: Product[];
+  total_price: number;
+  status: OrderStatus;
+  created_at: string;
+  updated_at: string;
+};
+
+export type CreateOrderOutput = {
+  success: boolean;
+  id?: number;
+};

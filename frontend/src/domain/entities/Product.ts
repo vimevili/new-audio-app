@@ -9,7 +9,6 @@ export class Product {
     public readonly image_url: string,
     public readonly price: number,
     public readonly rating: number,
-    public readonly created_at: string,
     public readonly reviews: Review[] = []
   ) {}
 }

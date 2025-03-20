@@ -4,7 +4,7 @@ export class Review {
     public readonly productId: number,
     public readonly userId: string,
     public rating: number,
-    public description: string,
+    public comment: string,
     public readonly createdAt: string,
     public updatedAt: string
   ) {}

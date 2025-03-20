@@ -1,8 +1,5 @@
 import { Review } from '../../entities/Review';
-import { Product } from '../../entities/Product';
 
-export class ListProductReviewsUseCase {
-  execute(product: Product): Review[] {
-    return product.reviews;
-  }
+export interface ListProductReviewsUseCase {
+  execute(products_id: number[]): Promise<Review[]>;
 }

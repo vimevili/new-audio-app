@@ -15,8 +15,8 @@ export class InvalidProductError extends ProductError {
 }
 
 export class ProductNotFoundError extends ProductError {
-  constructor(productId: number) {
-    super(`Product with ID ${productId} not found`);
+  constructor() {
+    super(`Product not found`);
     this.name = 'ProductNotFoundError';
   }
 }
@@ -46,5 +46,19 @@ export class InvalidQuantityError extends ProductError {
   constructor(quantity: number) {
     super(`Invalid quantity: ${quantity}. Quantity must be greater than 0`);
     this.name = 'InvalidQuantityError';
+  }
+}
+
+export class ProductReviewsLoadError extends ProductError {
+  constructor(productId: number) {
+    super(`Failed to load reviews for product ${productId}`);
+    this.name = 'ProductReviewsLoadError';
+  }
+}
+
+export class ProductSearchError extends ProductError {
+  constructor() {
+    super('There was an error while searching products');
+    this.name = 'ProductSearchError';
   }
 }

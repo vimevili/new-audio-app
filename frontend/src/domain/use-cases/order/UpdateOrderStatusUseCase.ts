@@ -1,25 +1,16 @@
-import { Order, OrderStatus } from '../../entities/Order';
-import { User } from '../../entities/User';
-import {
-  OrderNotFoundError,
-  InvalidOrderStatusError,
-} from '../../errors/OrderErrors';
+import { OrderStatus } from '@/domain/entities/Order';
 
-export class UpdateOrderStatusUseCase {
-  execute(user: User, orderId: string, newStatus: OrderStatus): Order {
-    const order = user.orders.find((o) => o.id === orderId);
-
-    if (!order) {
-      throw new OrderNotFoundError();
-    }
-
-    if (!['pending', 'completed', 'cancelled'].includes(newStatus)) {
-      throw new InvalidOrderStatusError(newStatus);
-    }
-
-    order.status = newStatus;
-    order.updatedAt = new Date().toISOString();
-
-    return order;
-  }
+export interface UpdateOrderUseCase {
+  execute(input: UpdateOrderInput): Promise<UpdateOrderOutput>;
 }
+
+export type UpdateOrderInput = {
+  id: string;
+  status: OrderStatus;
+  updated_at: string;
+};
+
+export type UpdateOrderOutput = {
+  success: boolean;
+  id?: number;
+};
