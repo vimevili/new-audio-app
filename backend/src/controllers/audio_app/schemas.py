@@ -22,6 +22,7 @@ audio_app_products_response = audio_namespace.model('AudioApp products', {
 #Reviews --------------------------------------------------------
 audio_app_reviews_parser = reqparse.RequestParser()
 audio_app_reviews_parser.add_argument('product_id', type=int, action='split', location='args', required=True)
+audio_app_reviews_parser.add_argument('user', type=str, location='args')
 
 audio_app_reviews_response = audio_namespace.model('AudioApp reviews', {
     'id': fields.Integer,
@@ -29,6 +30,20 @@ audio_app_reviews_response = audio_namespace.model('AudioApp reviews', {
     'user': fields.String,
     'comment': fields.String,
     'rating': fields.Float,
+    'created_at': fields.String,
+    'updated_at': fields.String
+})
+
+#Orders --------------------------------------------------------
+audio_app_orders_parser = reqparse.RequestParser()
+audio_app_orders_parser.add_argument('user_id', type=int, location='args', required=True)
+
+audio_app_orders_response = audio_namespace.model('AudioApp orders', {
+    'id': fields.Integer,
+    'user_id': fields.Integer,
+    'items': fields.List(fields.String),
+    'total_price': fields.Float,
+    'status': fields.String,
     'created_at': fields.String,
     'updated_at': fields.String
 })
